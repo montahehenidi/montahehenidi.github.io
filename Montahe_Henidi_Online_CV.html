@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montahe Henidi — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f3ec;
+    --panel:#efeade;
+    --ink:#1e2a28;
+    --ink-soft:#4b5a56;
+    --rule:#d8d2c2;
+    --teal:#1f5c54;
+    --teal-deep:#143f39;
+    --ochre:#a9813f;
+    --ochre-soft:#c9a45f;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:15.5px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:980px;
+    margin:0 auto;
+    padding:56px 32px 80px;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-bottom:44px;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ochre);
+  }
+
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(40px, 6vw, 64px);
+    letter-spacing:-0.01em;
+    color:var(--teal-deep);
+    line-height:1;
+  }
+
+  .role-line{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:19px;
+    color:var(--ink-soft);
+  }
+
+  .index-strip{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    margin-top:8px;
+  }
+
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  .contact-row a{color:var(--teal); text-decoration:none; border-bottom:1px solid transparent;}
+  .contact-row a:hover{border-bottom-color:var(--teal);}
+
+  svg.spark{ flex-shrink:0; }
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:0 0 40px;
+  }
+
+  /* ---------- Layout ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:0 48px;
+    align-items:start;
+  }
+
+  aside{
+    position:sticky;
+    top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+  }
+
+  main{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+  }
+
+  section h2{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ochre);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  section h2::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--rule);
+  }
+
+  aside h2{margin-bottom:12px;}
+
+  .profile p{
+    color:var(--ink);
+    font-size:15.5px;
+    max-width:62ch;
+  }
+
+  /* ---------- Sidebar blocks ---------- */
+  .skill-block{display:flex; flex-direction:column; gap:8px;}
+  .skill-block .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .skill-block .value{font-size:14px; color:var(--ink);}
+
+  .lang-list{display:flex; flex-direction:column; gap:6px;}
+  .lang-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:14px;
+  }
+  .lang-item .level{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ochre-soft);
+    text-transform:uppercase;
+  }
+
+  .pill-list{display:flex; flex-wrap:wrap; gap:6px;}
+  .pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:4px 9px;
+    border:1px solid var(--rule);
+    border-radius:3px;
+    color:var(--ink-soft);
+    background:var(--panel);
+  }
+
+  .cert-list, .dist-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .cert-list li, .dist-list li{list-style:none; padding-left:14px; position:relative;}
+  .cert-list li::before, .dist-list li::before{
+    content:"—";
+    position:absolute; left:0; color:var(--ochre-soft);
+  }
+
+  /* ---------- Experience / Education entries ---------- */
+  .entry{
+    display:grid;
+    grid-template-columns:118px 1fr;
+    gap:18px;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--rule);
+  }
+  .entry:last-child{border-bottom:none; padding-bottom:0;}
+
+  .entry .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ochre);
+    padding-top:3px;
+  }
+  .entry .where{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  .entry .title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:18px;
+    color:var(--teal-deep);
+  }
+  .entry .org{
+    font-style:italic;
+    font-family:'Fraunces', serif;
+    color:var(--ink-soft);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+
+  .entry ul{padding-left:18px; display:flex; flex-direction:column; gap:5px;}
+  .entry ul li{font-size:14px; color:var(--ink);}
+
+  .entry p.grade{
+    font-size:13px;
+    color:var(--teal);
+    font-family:'IBM Plex Mono', monospace;
+    margin-top:4px;
+  }
+  .entry p.thesis{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* Civic leadership as compact rows */
+  .civic-list{display:flex; flex-direction:column; gap:16px;}
+  .civic-item{display:grid; grid-template-columns:1fr; gap:2px;}
+  .civic-item .title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--teal-deep);
+  }
+  .civic-item .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ochre);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .civic-item p{font-size:14px; color:var(--ink-soft); margin-top:4px;}
+
+  .misc-item{margin-bottom:10px;}
+  .misc-item .title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--teal-deep);
+  }
+  .misc-item .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ochre);
+  }
+  .misc-item p{font-size:14px; color:var(--ink-soft); margin-top:4px;}
+
+  footer{
+    margin-top:56px;
+    padding-top:20px;
+    border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width: 760px){
+    .grid{grid-template-columns:1fr;}
+    aside{position:static; padding-bottom:24px; border-bottom:1px solid var(--rule); margin-bottom:8px;}
+    .entry{grid-template-columns:1fr;}
+    .index-strip{flex-direction:column; align-items:flex-start; gap:14px;}
+  }
+
+  @media print{
+    body{background:#fff;}
+    .page{padding:20px;}
+    aside{position:static;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="eyebrow">Curriculum Vitæ — Tunis, Tunisia</div>
+    <h1>Montahe Henidi</h1>
+    <div class="index-strip">
+      <div>
+        <div class="role-line">Economic Policy Researcher &amp; Public Engagement Professional</div>
+        <div class="contact-row" style="margin-top:10px;">
+          <span>+216 58 919 460</span>
+          <a href="mailto:montahahenidi747@gmail.com">montahahenidi747@gmail.com</a>
+          <span>Résidence du Lac, 1003 Tunis</span>
+        </div>
+      </div>
+      <svg class="spark" width="150" height="46" viewBox="0 0 150 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polyline points="0,34 20,30 38,36 55,18 72,24 90,10 108,16 126,6 150,12"
+          stroke="#1f5c54" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="150" cy="12" r="3" fill="#a9813f"/>
+      </svg>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <div class="grid">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside>
+
+      <div class="skill-block">
+        <h2>Languages</h2>
+        <div class="lang-list">
+          <div class="lang-item"><span>Arabic</span><span class="level">Native</span></div>
+          <div class="lang-item"><span>French</span><span class="level">Fluent</span></div>
+          <div class="lang-item"><span>English</span><span class="level">Fluent</span></div>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <h2>Skills</h2>
+        <div class="value" style="margin-bottom:10px;">
+          <div class="label" style="margin-bottom:6px;">Computer</div>
+          <div class="pill-list">
+            <span class="pill">Word</span><span class="pill">Excel</span><span class="pill">PowerPoint</span><span class="pill">R</span>
+          </div>
+        </div>
+        <div class="value">
+          <div class="label" style="margin-bottom:6px;">Communication</div>
+          <div class="pill-list">
+            <span class="pill">Press releases</span><span class="pill">Social media</span><span class="pill">Content creation</span><span class="pill">Event documentation</span><span class="pill">Media coordination</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <h2>Certifications</h2>
+        <ul class="cert-list">
+          <li>You SI NET Training (online)</li>
+          <li>Cryptocurrency Academy Certificate</li>
+          <li>ISO 56000:2019 Innovation Management Systems Training</li>
+          <li>Social and Solidarity Economy Training</li>
+        </ul>
+      </div>
+
+      <div class="skill-block">
+        <h2>Distinctions</h2>
+        <ul class="dist-list">
+          <li>3rd Prize — FSEGT Students Challenge, "Education and Sustainable Development" (Tabaani project)</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+      <section class="profile">
+        <h2>Profile</h2>
+        <p>Communications professional with hands-on experience producing press materials, managing social media, and documenting cultural and civic events, paired with a Master's-level research background in economics and public policy. Fluent in Arabic, French, and English, with strong writing skills across formats — press releases, social content, reports — and a track record of coordinating with media, partners, and multidisciplinary teams. Experienced founder and organizer of civil-society initiatives, comfortable adapting communication content and tone to diverse audiences and institutional standards.</p>
+      </section>
+
+      <section>
+        <h2>Professional Experience</h2>
+
+        <div class="entry">
+          <div class="when">Jun.–Jul. 2022<span class="where">Tunis</span></div>
+          <div>
+            <div class="title">Marketing &amp; Supply Intern</div>
+            <div class="org">SNDP AGIL</div>
+            <ul>
+              <li>Designed and ran market research studies via online surveys, gathering input from 100+ respondents.</li>
+              <li>Conducted competitive analysis feeding into new strategic initiatives.</li>
+              <li>Produced marketing communication materials and managed social media content.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="when">Jun. 2019–Sep. 2022<span class="where">Tunis</span></div>
+          <div>
+            <div class="title">Administrative Assistant</div>
+            <div class="org">Consulting Firm — Chinese Embassy Visa Services</div>
+            <ul>
+              <li>Coordinated 50+ client appointments with the Chinese embassy, managing scheduling and follow-up.</li>
+              <li>Compiled visa application files in line with consular requirements.</li>
+              <li>Maintained client records in the firm's database and provided front-line guidance to applicants.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+
+        <div class="entry">
+          <div class="when">2023–2026<span class="where">Tunis</span></div>
+          <div>
+            <div class="title">Master's in Economic Analysis and Public Policy</div>
+            <div class="org">Faculté des Sciences Économiques et de Gestion, Tunis El Manar</div>
+            <p class="grade">Grade: 17/20</p>
+            <p class="thesis">Thesis: "IMF Programs and Fiscal Health in MENA: Evidence from a Panel of Emerging Economies (2011–2024)." Defended and completed.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="when">Feb.–Jul. 2024<span class="where">Palermo</span></div>
+          <div>
+            <div class="title">Erasmus+ Double Degree — Economics and Finance</div>
+            <div class="org">Università degli Studi di Palermo, Italy</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="when">2020–2023<span class="where">Tunis</span></div>
+          <div>
+            <div class="title">Bachelor's in Economics — Economic Analysis and Public Policy</div>
+            <div class="org">Faculté des Sciences Économiques et de Gestion, Tunis El Manar</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Civic Leadership &amp; Volunteering</h2>
+        <div class="civic-list">
+          <div class="civic-item">
+            <div class="role">Founder</div>
+            <div class="title">Rethinking Economics Tunisia</div>
+            <p>First Tunisian chapter of the global Rethinking Economics network. Led communications, outreach, and content strategy to build the chapter's public presence.</p>
+          </div>
+          <div class="civic-item">
+            <div class="role">Co-Organizer</div>
+            <div class="title">TEDx El Ghazela Women — "Fierce and Fearless"</div>
+            <p>Managed event communications, speaker coordination, and audience engagement.</p>
+          </div>
+          <div class="civic-item">
+            <div class="role">Outgoing International Volunteering Team Member</div>
+            <div class="title">AIESEC</div>
+          </div>
+          <div class="civic-item">
+            <div class="role">Secretary General</div>
+            <div class="title">JCI Students FSEGT</div>
+            <p>Coordinated internal communications and event documentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Publications</h2>
+        <div class="misc-item">
+          <div class="title">"Data-Indexed Allocation System"</div>
+          <div class="meta">Dazed MENA — June 8, 2026</div>
+          <p>Speculative proposal featured in Dazed MENA's Issue 05, imagining a future where money is no longer the ultimate measure of worth.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Project</h2>
+        <div class="misc-item">
+          <div class="title">ReBread</div>
+          <p>Prototype mobile/web application to reduce bread waste, connecting bakeries, NGOs, farmers, and recyclers. Unsold bread is sorted by end use — consumption, animal feed, compost — with a real-time dashboard tracking waste-reduction impact.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <span>Montahe Henidi</span>
+    <span>Updated July 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
